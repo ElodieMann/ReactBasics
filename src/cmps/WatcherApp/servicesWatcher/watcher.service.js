@@ -1,4 +1,3 @@
-//watcher.service.js
 
 import { storageService } from "./async-storage.service";
 

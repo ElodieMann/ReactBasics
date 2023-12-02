@@ -1,4 +1,3 @@
-//util.service.js
 
 async function getData(key) {
     try {
