@@ -1,0 +1,12 @@
+.dark {
+    background-color: blue;
+    color: white;
+}
+.white {
+    background-color: cornflowerblue;
+    color: blue;
+}
+
+p{
+    text-transform: capitalize;
+}

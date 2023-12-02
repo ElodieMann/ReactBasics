@@ -1,0 +1,12 @@
+.mouseContainer {
+    background-color: black;
+    width: 60%;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+h1 {
+color: white;
+}
