@@ -9,9 +9,9 @@ async function getData(key) {
     }
   }
   
-  async function addToData(key, place) {
+  async function addToData(key, item) {
     try {
-      await localStorage.setItem(key, JSON.stringify(place));
+      await localStorage.setItem(key, JSON.stringify(item));
     } catch (error) {
       console.error(`Error adding data to localStorage: ${error.message}`);
       throw error;
