@@ -8,23 +8,28 @@ import ModalWatcher from "./ModalWatcher.jsx";
 export const WatcherApp = () => {
   const [watchers, setWatchers] = useState([]);
   const [selectedWatcher, setSelectedWatcher] = useState(null);
-  const [updateWatcher, setUpdateWatcher] = useState(false)
+  const [updateWatcher, setUpdateWatcher] = useState(false);
+  const [isModal, setIsModal] = useState(false);
 
 
   useEffect(() => {
-    getData()
+    getData();
   }, []);
+
   useEffect(() => {
-    getData()
-    setUpdateWatcher(false)
+    getData();
+    setUpdateWatcher(false);
   }, [updateWatcher]);
 
-
+  const onAddWatch = async (newWatcher) => {
+    const watcher = await watcherController.addWatcher(newWatcher);
+    setWatchers((prev) => [...prev, watcher]);
+  };
 
   const getData = async () => {
     try {
       const watchers = await watcherController.getAllWatchers();
-      setWatchers(watchers)
+      setWatchers(watchers);
     } catch (error) {
       console.error("Error fetching watchers:", error);
     }
@@ -32,17 +37,26 @@ export const WatcherApp = () => {
 
   return (
     <div>
-      <AddWatcher
-        getData={getData} 
-      />
+      <AddWatcher onAddWatch={onAddWatch} />
       <ul>
         {watchers?.map((watcher) => (
-          <CardWatcher key={watcher.id} watcher={watcher} getData={getData} setSelectedWatcher={setSelectedWatcher}/>
+          <CardWatcher
+            key={watcher.id}
+            watcher={watcher}
+            getData={getData}
+            setSelectedWatcher={setSelectedWatcher}
+            setIsModal={setIsModal}
+          />
         ))}
       </ul>
-      {selectedWatcher && <ModalWatcher selectedWatcher={selectedWatcher}setUpdateWatcher={setUpdateWatcher} />}
+      {selectedWatcher && (
+        <ModalWatcher
+          selectedWatcher={selectedWatcher}
+          setUpdateWatcher={setUpdateWatcher}
+          isModal={isModal}
+          setIsModal={setIsModal}
+        />
+      )}
     </div>
-
-  
   );
 };

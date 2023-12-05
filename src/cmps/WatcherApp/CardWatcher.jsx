@@ -2,10 +2,7 @@ import { useEffect } from "react";
 import "./WatcherApp.css";
 import { watcherController } from "./servicesWatcher/watcher.service.js";
 
-const CardWatcher = ({ watcher, getData, setSelectedWatcher }) => {
-
-
-
+const CardWatcher = ({ watcher, getData, setSelectedWatcher, setIsModal }) => {
 
   const onDelete = async () => {
     await watcherController.removeWatcher(watcher.id);
@@ -13,12 +10,7 @@ const CardWatcher = ({ watcher, getData, setSelectedWatcher }) => {
   };
 
   const onSeeModal = () => {
-    const modalElement = document.querySelector('.modal');
-
-    if (modalElement) {
-      modalElement.style.display = 'block';
-      setSelectedWatcher(watcher.id);
-    }
+    setIsModal(true)
     setSelectedWatcher(watcher.id)
   }
 

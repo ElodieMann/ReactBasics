@@ -9,7 +9,7 @@ export const MouseMonitor = () => {
   });
 
   useEffect(() => {
-   isOn ? document.addEventListener('mousemove', position) : document.removeEventListener('mousemove', position)
+   if (isOn)  document.addEventListener('mousemove', position)
 
    return () => {
     document.removeEventListener('mousemove', position);
@@ -31,7 +31,7 @@ export const MouseMonitor = () => {
       <p>
         x:{pos.x}, y:{pos.y}
       </p>
-      <button onClick={() => setIsOn(!isOn)}>{isOn ? 'Pause' : 'Resume'}</button>
+      <button onClick={() => setIsOn((prev) => !prev)}>{isOn ? 'Pause' : 'Resume'}</button>
     </div>
   );
 };

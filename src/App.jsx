@@ -7,13 +7,23 @@ import MouseMonitor from "./cmps/MouseMonitor/MouseMonitor";
 import { useState } from "react";
 
 function App() {
+
+
   const [page, setPage] = useState("clock");
+
+  const animalInfos = [
+    { type: "Malayan Tiger", count: 787 },
+    { type: "Mountain Gorilla", count: 212 },
+    { type: "Fin Whale", count: 28 },
+  ];
+
+
   const renderPage = () => {
     switch (page) {
       case "clock":
         return <SeasonClock />;
       case "animals":
-        return <AnimalList />;
+        return <AnimalList animalInfos={animalInfos} />;
       case "countdown":
         return (
           /* <CountDown

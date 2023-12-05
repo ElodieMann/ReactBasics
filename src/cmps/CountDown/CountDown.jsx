@@ -5,11 +5,7 @@ export const CountDown = ({ toTime, startFrom, onDone }) => {
 
   const [time, setTime] = useState(startFrom);
   const intervalIdRef = useRef();
-
-  const audioTune = new Audio('./audio.mp3');
-  audioTune.muted = true
-  
-
+  const [audio] = useState(new Audio('/audio.mp3'));
 
   useEffect(() => {
     if (toTime) {
@@ -25,7 +21,8 @@ export const CountDown = ({ toTime, startFrom, onDone }) => {
         }, 1000);
       } else {
         onDone();
-        new Audio('./audio.mp3').play();
+        audio.play().then(() => console.log('test'))
+        return
       }
     
 

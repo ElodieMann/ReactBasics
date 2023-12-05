@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./WatcherApp.css";
 import { watcherController } from "./servicesWatcher/watcher.service.js";
 
-const AddWatcher = ({ getData }) => {
+const AddWatcher = ({ onAddWatch }) => {
   const [newWatcher, setNewWatcher] = useState({
     name: "",
     movies: [],
@@ -13,22 +13,23 @@ const AddWatcher = ({ getData }) => {
 
     setNewWatcher((prevWatcher) => ({
       ...prevWatcher,
-      [name]: name === "movies" ? value.split(",").map((movie) => movie.trim()) : value,
+      [name]:
+        name === "movies"
+          ? value.split(",").map((movie) => movie.trim())
+          : value,
     }));
   };
 
   const addWatcher = async (e) => {
     e.preventDefault();
 
-    await watcherController.addWatcher(newWatcher);
-    getData();
+    onAddWatch(newWatcher);
 
     setNewWatcher({
       name: "",
       movies: [],
     });
   };
-
 
   return (
     <div>

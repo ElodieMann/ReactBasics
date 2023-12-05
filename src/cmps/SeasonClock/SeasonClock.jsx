@@ -30,7 +30,7 @@ export const SeasonClock = () => {
         {currentMonth} ({currentSeason})
       </h1>
       <img
-        src={`../seasons/${currentSeason.toLowerCase()}.png`}
+        src={`/public/seasons/${currentSeason.toLowerCase()}.png`}
         alt={currentSeason}
       />
       <p>{currentDay}</p>
