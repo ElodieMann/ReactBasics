@@ -1,6 +1,5 @@
-import { useEffect } from "react";
-import "./WatcherApp.css";
 import { watcherController } from "./servicesWatcher/watcher.service.js";
+import "./WatcherApp.css";
 
 const CardWatcher = ({ watcher, getData, setSelectedWatcher, setIsModal }) => {
 

@@ -1,5 +1,5 @@
-import "./AnimalList.css";
 import { TableAnimals } from "./TableAnimals";
+import "./AnimalList.css";
 
 export const AnimalList = ({ animalInfos }) => {
   return (

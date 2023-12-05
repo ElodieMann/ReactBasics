@@ -21,7 +21,7 @@ export const CountDown = ({ toTime, startFrom, onDone }) => {
         }, 1000);
       } else {
         onDone();
-        audio.play().then(() => console.log('test'))
+        audio.play()
         return
       }
     

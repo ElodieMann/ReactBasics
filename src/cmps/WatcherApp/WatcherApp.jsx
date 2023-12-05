@@ -1,9 +1,9 @@
-import "./WatcherApp.css";
-import CardWatcher from "./CardWatcher";
 import { useEffect, useState } from "react";
 import { watcherController } from "./servicesWatcher/watcher.service.js";
+import CardWatcher from "./CardWatcher";
 import AddWatcher from "./AddWatcher.jsx";
 import ModalWatcher from "./ModalWatcher.jsx";
+import "./WatcherApp.css";
 
 export const WatcherApp = () => {
   const [watchers, setWatchers] = useState([]);
